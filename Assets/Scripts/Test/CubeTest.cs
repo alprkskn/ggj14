@@ -4,16 +4,12 @@ using System.Collections.Generic;
 public class CubeTest : MonoBehaviour {
 
 	private Mesh cubeMesh;
-	private GameObject go;
 
-	public Material mat;
 
 	// Use this for initialization
 	void Start () {
-		go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		cubeMesh = go.GetComponent<MeshFilter>().mesh;
+		cubeMesh = gameObject.GetComponent<MeshFilter>().mesh;
 		eliminateForwardFaces(cubeMesh);
-		go.renderer.material = mat;
 	}
 	
 	// Update is called once per frame

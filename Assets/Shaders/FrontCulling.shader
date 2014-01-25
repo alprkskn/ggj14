@@ -3,12 +3,21 @@
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		Tags { 
+			"Queue"="Geometry"
+			"IgnoreProjector"="True"
+		}
 		LOD 200
 		
-		Blend One Zero
 		Cull Front
 		ZWrite On
+		
+		Stencil {
+			Ref 1
+			Comp always
+			Pass replace
+		}
+		
 		CGPROGRAM
 		#pragma surface surf Lambert
 
