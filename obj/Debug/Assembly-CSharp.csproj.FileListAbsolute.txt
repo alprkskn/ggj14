@@ -1,0 +1,11 @@
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\UnityEditor.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\UnityEngine.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\nunit.framework.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\joker\Documents\GitHub\ggj14\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\joker\Documents\GitHub\ggj14\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\joker\Documents\GitHub\ggj14\obj\Debug\Assembly-CSharp.dll
+C:\Users\joker\Documents\GitHub\ggj14\obj\Debug\Assembly-CSharp.pdb
