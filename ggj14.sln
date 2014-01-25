@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{991203FB-2584-C147-9DAE-8B442927EF3D}") = "ggj14", "Assembly-CSharp.csproj", "{DF68D7EC-DE94-A1CB-8726-D01084B3FFC5}"
 EndProject
+Project("{991203FB-2584-C147-9DAE-8B442927EF3D}") = "ggj14", "Assembly-CSharp-Editor.csproj", "{FF9EFB57-2DFB-59A4-CFE3-3A2D97FA469C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{DF68D7EC-DE94-A1CB-8726-D01084B3FFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF68D7EC-DE94-A1CB-8726-D01084B3FFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF68D7EC-DE94-A1CB-8726-D01084B3FFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9EFB57-2DFB-59A4-CFE3-3A2D97FA469C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9EFB57-2DFB-59A4-CFE3-3A2D97FA469C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9EFB57-2DFB-59A4-CFE3-3A2D97FA469C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9EFB57-2DFB-59A4-CFE3-3A2D97FA469C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-							GlobalSection(MonoDevelopProperties) = preSolution
+									GlobalSection(MonoDevelopProperties) = preSolution
 																				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
