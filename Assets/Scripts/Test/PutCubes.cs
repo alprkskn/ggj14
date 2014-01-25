@@ -15,6 +15,9 @@ public class PutCubes : MonoBehaviour {
 				cube.transform.position = new Vector3(i, 0, j);
 				cube.transform.parent = this.gameObject.transform;
 				cube.renderer.material = tileMat;
+
+                cube.AddComponent<Rigidbody>();          
+                cube.rigidbody.isKinematic = true;
 			}
 		}
 
@@ -33,6 +36,8 @@ public class PutCubes : MonoBehaviour {
 					invertedNormals[count++] = -n;
 				}
 				cube.GetComponent<MeshFilter>().mesh.normals = invertedNormals;
+                cube.AddComponent<Rigidbody>();   
+                cube.rigidbody.isKinematic = true;
 			}
 		}
 
@@ -44,15 +49,17 @@ public class PutCubes : MonoBehaviour {
 					cube.transform.position = new Vector3(i, j, 2);
 					cube.transform.parent = this.gameObject.transform;
 					cube.renderer.material = tileMat;
+                    cube.AddComponent<Rigidbody>();   
+                    cube.rigidbody.isKinematic = true;
 				}
 			}
 		}
-
+        /*
 		Camera cam = Camera.main;
 
 		cam.fieldOfView = 40;
 		cam.transform.position = new Vector3(width / 2f, 7f, -9f);
-		cam.transform.Rotate(Vector3.right * 20);
+		cam.transform.Rotate(Vector3.right * 20);*/
 	}
 	
 	// Update is called once per frame

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class player : MonoBehaviour {
 
@@ -12,7 +12,29 @@ public class player : MonoBehaviour {
 
     public inventory inventory;
 
+    public enum DrugEnums
+    {
+        LSD,
+        Smoke,
+        Mushroom,
+        Vodka
+    };
+
+    public List<DrugEnums> drugList;
+    public List<float> drugTime;
+
     public double toxicity = 0.00;
+
+    void Start()
+    {
+        drugList = new List<DrugEnums>();
+        drugTime = new List<float>(4);
+    }
+
+    void FixedUpdate()
+    {
+        
+    }
 
     void Update() {
         //CharacterController controller = GetComponent<CharacterController>();
@@ -43,7 +65,7 @@ public class player : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.RightShift))
             {
                 //interactions
-                // if sandik or kapi then open it
+                // if sandik or kapi or window then open it
             }
             if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.RightControl))
             {
@@ -52,7 +74,7 @@ public class player : MonoBehaviour {
             }
             if (toxicity >= 100)
             {
-                print("Game Over");
+                print("Bad Trick");
             }
         //}
         //transform.position -= transform.up * gravity * Time.deltaTime;
@@ -64,24 +86,28 @@ public class player : MonoBehaviour {
         {
             LSD consumedLSD = (LSD)meth;
             toxicity += Random.Range(consumedLSD.minToxicityLevel, consumedLSD.maxToxicityLevel);
+            drugList.Add(DrugEnums.LSD);
         }
 
         else if (meth.GetType().ToString().CompareTo("smoke") == 0)
         {
             smoke consumedSmoke = (smoke)meth;
             toxicity += Random.Range(consumedSmoke.minToxicityLevel, consumedSmoke.maxToxicityLevel);
+            drugList.Add(DrugEnums.Smoke);
         }
 
         else if (meth.GetType().ToString().CompareTo("mushroom") == 0)
         {
             mushroom consumedMushroom = (mushroom)meth;
             toxicity += Random.Range(consumedMushroom.minToxicityLevel, consumedMushroom.maxToxicityLevel);
+            drugList.Add(DrugEnums.Mushroom);
         }
 
         else if (meth.GetType().ToString().CompareTo("vodka") == 0)
         {
             vodka consumedVodka = (vodka)meth;
             toxicity += Random.Range(consumedVodka.minToxicityLevel, consumedVodka.maxToxicityLevel);
+            drugList.Add(DrugEnums.Vodka);
         }
     }
 }
