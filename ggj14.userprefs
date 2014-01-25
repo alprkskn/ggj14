@@ -1,14 +1,21 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shaders\Wall.shader">
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Agents\player.cs">
+>>>>>>> origin/master
     <Files>
-      <File FileName="Assets\Scripts\Test\PutCubes.cs" Line="36" Column="4" />
       <File FileName="Assets\Scripts\Agents\player.cs" Line="1" Column="1" />
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\Test\CubeTest.cs" Line="1" Column="1" />
       <File FileName="Assets\Shaders\OccludedWall.shader" Line="1" Column="1" />
       <File FileName="Assets\Shaders\FrontCulling.shader" Line="1" Column="1" />
       <File FileName="Assets\Shaders\WallOccluder.shader" Line="5" Column="3" />
       <File FileName="Assets\Shaders\Wall.shader" Line="27" Column="16" />
+=======
+>>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
