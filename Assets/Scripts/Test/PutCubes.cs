@@ -7,7 +7,10 @@ public class PutCubes : MonoBehaviour {
 
 	public Material tileMat;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		GameObject sp = new GameObject("Spawn Point");
+		sp.tag = "SpawnPoint";
+		sp.transform.position = new Vector3(0f, .7f, 0f);
 		for (int i=0; i < width; i++)
 		{
 			for (int j=0; j< height; j++) {

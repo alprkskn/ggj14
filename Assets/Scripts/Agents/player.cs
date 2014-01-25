@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class player : MonoBehaviour {
+
+public class Player : MonoBehaviour {
 
     public float speed = 0.1f;
     public float specialSpeedConst = 1.0f;
