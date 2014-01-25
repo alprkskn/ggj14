@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PutCubes : MonoBehaviour {
 	public int width;
@@ -24,6 +24,15 @@ public class PutCubes : MonoBehaviour {
 				cube.transform.position = new Vector3(i, j, height);
 				cube.transform.parent = this.gameObject.transform;
 				cube.renderer.material = tileMat;
+
+				Vector3[] meshNormals = cube.GetComponent<MeshFilter>().mesh.normals;
+				Vector3[] invertedNormals = new Vector3[meshNormals.Length];
+				int count = 0;
+				foreach(Vector3 n in meshNormals)
+				{
+					invertedNormals[count++] = -n;
+				}
+				cube.GetComponent<MeshFilter>().mesh.normals = invertedNormals;
 			}
 		}
 
