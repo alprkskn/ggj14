@@ -2,26 +2,22 @@
 using System.Collections;
 
 public class player : MonoBehaviour {
-    public float speed = 6.0f;
+
+    public float speed = 0.1f;
     public float specialSpeedConst = 1.0f;
-    public float jumpSpeed = 8.0f;
+    public float jumpSpeed = 0.1f;
     public float specialJumpConst = 1.0f;
     public float gravity = 20.0f;
     public bool directionForward = true;
 
     public inventory inventory;
-    
-    public bool LSD = false;
-    public bool smoke = false;
-    public bool mushroom = false;
-    public bool vodka = false;
 
-    public float toxicity = 0.0f;
-    
+    public double toxicity = 0.00;
+
     void Update() {
-        CharacterController controller = GetComponent<CharacterController>();
-        if (controller.isGrounded)
-        {
+        //CharacterController controller = GetComponent<CharacterController>();
+        //if (controller.isGrounded)
+        //{
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 transform.position += transform.right * speed * specialSpeedConst;
@@ -40,21 +36,52 @@ public class player : MonoBehaviour {
             {
                 transform.position -= transform.forward * speed * specialSpeedConst;
             }
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 transform.position += transform.up * jumpSpeed * specialJumpConst;
             }
-            if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.RightShift))
+            if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.RightShift))
             {
                 //interactions
                 // if sandik or kapi then open it
             }
-            if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightControl))
+            if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.RightControl))
             {
                 //interactions
                 // if you can take smt then take it
             }
+            if (toxicity >= 100)
+            {
+                print("Game Over");
+            }
+        //}
+        //transform.position -= transform.up * gravity * Time.deltaTime;
+    }
+
+    public void consumeMeth(object meth)
+    {
+        if(meth.GetType().ToString().CompareTo("LSD") == 0)
+        {
+            LSD consumedLSD = (LSD)meth;
+            toxicity += Random.Range(consumedLSD.minToxicityLevel, consumedLSD.maxToxicityLevel);
         }
-        transform.position -= transform.up * gravity * Time.deltaTime;
+
+        else if (meth.GetType().ToString().CompareTo("smoke") == 0)
+        {
+            smoke consumedSmoke = (smoke)meth;
+            toxicity += Random.Range(consumedSmoke.minToxicityLevel, consumedSmoke.maxToxicityLevel);
+        }
+
+        else if (meth.GetType().ToString().CompareTo("mushroom") == 0)
+        {
+            mushroom consumedMushroom = (mushroom)meth;
+            toxicity += Random.Range(consumedMushroom.minToxicityLevel, consumedMushroom.maxToxicityLevel);
+        }
+
+        else if (meth.GetType().ToString().CompareTo("vodka") == 0)
+        {
+            vodka consumedVodka = (vodka)meth;
+            toxicity += Random.Range(consumedVodka.minToxicityLevel, consumedVodka.maxToxicityLevel);
+        }
     }
 }
