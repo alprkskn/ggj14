@@ -166,7 +166,7 @@ public class player : MonoBehaviour {
 		GUI.Label(new Rect(Screen.currentResolution.width-150, 10, 100, 50), "Toxicity Level: " + toxicity);
 		GUI.Label(new Rect(Screen.currentResolution.width - 150, 10, 100, 50), "Consumed Drugs");
 		for (int i = 0; i < drugList.Count; i++ )
-			GUI.Label(new Rect(Screen.currentResolution.width - 150, 10, 100, 50), drugList[i].ToString());
+			GUI.Label(new Rect(Screen.currentResolution.width - 150, 60+i*50, 100, 50), drugList[i].ToString());
 	}
 
 	void OnTriggerEnter(Collider c) {
