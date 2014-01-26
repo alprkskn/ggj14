@@ -91,34 +91,62 @@ public class player : MonoBehaviour {
         }
 
         /* Timer for drugs effect time */
-        for (int i = 0; i < 3; i++)
-        {
-            if (drugTime[i] > Time.deltaTime)
-            {
-                drugTime[i] -= Time.deltaTime;
-            }
-            else
-            {
-                drugTime[i] = 0.0f;
-            }
-        }
-
-        /*Toxicity level control*/
-        if (toxicity >= 100)
-        {
-            print("Bad Trick");
-        }
-    }
-
+		if (Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Keypad1))
+		{
+			//useItem(DrugEnums.LSD);
+		}
+		if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.Keypad2))
+		{
+			//useItem(DrugEnums.Smoke);
+		}
+		if (Input.GetKeyUp(KeyCode.Alpha3) || Input.GetKeyUp(KeyCode.Keypad3))
+		{
+			//useItem(DrugEnums.Mushroom);
+		}
+		if (Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.Keypad4))
+		{
+			//useItem(DrugEnums.Vodka);
+		}
+		
+		/* Timer for drugs effect time */
+		for (int i = 0; i < 3; i++)
+		{
+			if (drugTime[i] > Time.deltaTime)
+			{
+				drugTime[i] -= Time.deltaTime;
+			}
+			else
+			{
+				drugTime[i] = 0;
+				DrugEnums drug = DrugEnums.LSD;
+				if (i == 0)
+					drug = DrugEnums.LSD;
+				if (i == 1)
+					drug = DrugEnums.Smoke;
+				if (i == 2)
+					drug = DrugEnums.Mushroom;
+				if (i == 3)
+					drug = DrugEnums.Vodka;
+				drugList.RemoveAt(drugList.IndexOf(drug, 0));
+			}
+		}
+		
+		/*Toxicity level control*/
+		if (toxicity >= 100)
+		{
+			print("Bad Trick");
+		}
+	}
+	
 	private void takeItemFrom(InteractObject obj) {
 		foreach(player.DrugEnums drug in obj.getItems()) {
 			if(!inventory.ContainsKey(drug))
 				inventory.Add(drug, 0);
-
+			
 			inventory[drug]++;
 		}
 	}
-
+	
 	private bool useItem(player.DrugEnums drug) {
 		if(inventory.ContainsKey(drug))
 		{
@@ -130,6 +158,15 @@ public class player : MonoBehaviour {
 		}
 
 		return false;
+	}
+	
+	void OnGUI()
+	{
+		GUI.Label(new Rect(10, 10, 400, 50), "Inventory: LSD x" + hello.ContainsKey(DrugEnums.LSD) + " Mariuhana x" + hello.ContainsKey(DrugEnums.Smoke) + " Mushroom x" + hello.ContainsKey(DrugEnums.Mushroom) + " Vodka x" + hello.ContainsKey(DrugEnums.Vodka));
+		GUI.Label(new Rect(Screen.currentResolution.width-150, 10, 100, 50), "Toxicity Level: " + toxicity);
+		GUI.Label(new Rect(Screen.currentResolution.width - 150, 10, 100, 50), "Consumed Drugs");
+		for (int i = 0; i < drugList.Count; i++ )
+			GUI.Label(new Rect(Screen.currentResolution.width - 150, 10, 100, 50), drugList[i].ToString());
 	}
 
 	void OnTriggerEnter(Collider c) {
