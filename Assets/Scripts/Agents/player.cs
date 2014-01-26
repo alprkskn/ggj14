@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 
 public class Player : MonoBehaviour {
-
+    SkeletonAnimation skeletonAnimation;
     public float speed = 0.1f;
     public float specialSpeedConst = 1.0f;
-    public float jumpSpeed = 0.1f;
+    public float jumpSpeed = 2.0f;
     public float specialJumpConst = 1.0f;
-    public float gravity = 20.0f;
     public bool directionForward = true;
     public inventory inventory;
     public enum DrugEnums
@@ -30,30 +29,43 @@ public class Player : MonoBehaviour {
         drugTime.Add(0);
         drugTime.Add(0);
         drugTime.Add(0);
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
     }
 
-    void Update() {
+    void Update()
+    {
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.position += transform.right * speed * specialSpeedConst;
+            //skeletonAnimation.animationName = "walk";
             directionForward = true;
         }
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position -= transform.right * speed * specialSpeedConst;
+            //skeletonAnimation.animationName = "sex bomb";
             directionForward = false;
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * speed * specialSpeedConst;
+            //if (directionForward)
+                //skeletonAnimation.animationName = "walk";
+            //else
+                //skeletonAnimation.animationName = "sex bomb";
         }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             transform.position -= transform.forward * speed * specialSpeedConst;
+            //if (directionForward)
+                //skeletonAnimation.animationName = "walk";
+            //else
+                //skeletonAnimation.animationName = "sex bomb";
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             transform.position += transform.up * jumpSpeed * specialJumpConst;
+                //skeletonAnimation.animationName = "jump";
         }
         if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.RightShift))
         {
