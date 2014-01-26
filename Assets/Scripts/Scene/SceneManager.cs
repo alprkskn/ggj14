@@ -12,7 +12,7 @@ public class SceneManager : Singleton<SceneManager> {
 
 	public Transform playerPrefab;
 
-	private GameObject player = null;
+	private GameObject playerObject = null;
 
 	[HideInInspector]
 	public Vector3 spawnPoint;
@@ -43,7 +43,7 @@ public class SceneManager : Singleton<SceneManager> {
 		currentKeys = 0;
 		numOfKeys = findKeysInScene();
 		spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
-		player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity) as GameObject;
+		playerObject = Instantiate(playerPrefab, spawnPoint, Quaternion.identity) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -55,16 +55,46 @@ public class SceneManager : Singleton<SceneManager> {
 		return GameObject.FindGameObjectsWithTag("Key").Length;
 	}
 
-	private IEnumerator revealObjects(Player.DrugEnums type) {
-		yield return null;
+	public void revealObjects(player.DrugEnums type) {
+ 		if(type == player.DrugEnums.LSD)
+		{
+			foreach(GameObject go in lsdObjects) {
+				go.SetActive(true);
+			}
+		}
+		if(type == player.DrugEnums.Smoke)
+		{
+			foreach(GameObject go in weedObjects) {
+				go.SetActive(true);
+			}
+		}
+		if(type == player.DrugEnums.Mushroom)
+		{
+			foreach(GameObject go in weedObjects) {
+				go.SetActive(true);
+			}
+		}
+		if(type == player.DrugEnums.Vodka)
+		{
+			foreach(GameObject go in vodkaObjects) {
+				go.SetActive(true);
+			}
+		}
 	}
 
-	private IEnumerator hideObjects(Player.DrugEnums type) {
-		yield return null;
-	}
-
-	public void substanceUsed(Player.DrugEnums type) {
-
+	public void hideObjects(player.DrugEnums type) {
+		foreach(GameObject go in lsdObjects) {
+			go.SetActive(false);
+		}
+		foreach(GameObject go in mushObjects) {
+			go.SetActive(false);
+		}
+		foreach(GameObject go in weedObjects) {
+			go.SetActive(false);
+		}
+		foreach(GameObject go in vodkaObjects) {
+			go.SetActive(false);
+		}
 	}
 
 	public void finishLevel() {

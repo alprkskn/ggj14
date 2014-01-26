@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-public class Player : MonoBehaviour {
+public class player : MonoBehaviour {
     SkeletonAnimation skeletonAnimation;
     public float speed = 3.0f;
     public float specialSpeedConst = 1.0f;
@@ -10,7 +10,8 @@ public class Player : MonoBehaviour {
     public float specialJumpConst = 1.0f;
     public bool directionForward = true;
     public inventory inventory;
-    public enum DrugEnums
+    
+	public enum DrugEnums
     {
         LSD,
         Smoke,
@@ -105,12 +106,14 @@ public class Player : MonoBehaviour {
     /* Check consumed drug and update toxicity level, add it into the drugList, and set the timer for that drug. */
     public void consumeMeth(object meth)
     {
+
         if(meth.GetType().ToString().CompareTo("LSD") == 0)
         {
             LSD consumedLSD = (LSD)meth;
             toxicity += Random.Range(consumedLSD.minToxicityLevel, consumedLSD.maxToxicityLevel);
             drugList.Add(DrugEnums.LSD);
             drugTime[(int)DrugEnums.LSD] += 7.0f - (float)(drugTime[(int)DrugEnums.LSD] * 0.5);
+			SceneManager.Instance.revealObjects(player.DrugEnums.LSD);
         }
 
         else if (meth.GetType().ToString().CompareTo("smoke") == 0)
@@ -119,6 +122,7 @@ public class Player : MonoBehaviour {
             toxicity += Random.Range(consumedSmoke.minToxicityLevel, consumedSmoke.maxToxicityLevel);
             drugList.Add(DrugEnums.Smoke);
             drugTime[(int)DrugEnums.Smoke] += 5.0f - (float)(drugTime[(int)DrugEnums.Smoke]*0.5);
+			SceneManager.Instance.revealObjects(player.DrugEnums.Smoke);
         }
 
         else if (meth.GetType().ToString().CompareTo("mushroom") == 0)
@@ -127,6 +131,7 @@ public class Player : MonoBehaviour {
             toxicity += Random.Range(consumedMushroom.minToxicityLevel, consumedMushroom.maxToxicityLevel);
             drugList.Add(DrugEnums.Mushroom);
             drugTime[(int)DrugEnums.Mushroom] += 6.0f - (float)(drugTime[(int)DrugEnums.Mushroom] * 0.5);
+			SceneManager.Instance.revealObjects(player.DrugEnums.Mushroom);
         }
 
         else if (meth.GetType().ToString().CompareTo("vodka") == 0)
@@ -135,6 +140,7 @@ public class Player : MonoBehaviour {
             toxicity += Random.Range(consumedVodka.minToxicityLevel, consumedVodka.maxToxicityLevel);
             drugList.Add(DrugEnums.Vodka);
             drugTime[(int)DrugEnums.Vodka] += 5.0f - (float)(drugTime[(int)DrugEnums.Vodka] * 0.5);
+			SceneManager.Instance.revealObjects(player.DrugEnums.Vodka);
         }
     }
 }
