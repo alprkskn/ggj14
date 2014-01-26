@@ -12,13 +12,15 @@ public class SceneManager : Singleton<SceneManager> {
 
 	public Transform playerPrefab;
 
+	public int nextLevel;
+
 	private GameObject playerObject = null;
 
 	[HideInInspector]
 	public Vector3 spawnPoint;
 
 	private int numOfKeys = 0;
-	private int currentKeys = 0;
+	public int currentKeys = 0;
 	public int FoundKeys {
 		get { return this.currentKeys; }
 	}
@@ -48,7 +50,6 @@ public class SceneManager : Singleton<SceneManager> {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	private int findKeysInScene() {
@@ -82,6 +83,8 @@ public class SceneManager : Singleton<SceneManager> {
 		}
 	}
 
+
+
 	public void hideObjects(player.DrugEnums type) {
 		foreach(GameObject go in lsdObjects) {
 			go.SetActive(false);
@@ -99,5 +102,6 @@ public class SceneManager : Singleton<SceneManager> {
 
 	public void finishLevel() {
 		Debug.Log ("Zaaa Bitti.");
+		Application.LoadLevel(nextLevel);
 	}
 }
